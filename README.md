@@ -1,3 +1,5 @@
+https://forthebadge.com/images/badges/built-with-love.svg
+
 # Auto-File-Download-Using-JS
 
 This script will help you to download your payload automatically into your targets system.
